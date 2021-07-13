@@ -2,14 +2,13 @@ name: Firebase Continuous Deployment
 
 on:
   push:
-    branches: [ master ]
-
+    branches: [master]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@master # Check out to the master branch and uses that code
       - uses: actions/setup-node@master
         with:
           node-version: 12

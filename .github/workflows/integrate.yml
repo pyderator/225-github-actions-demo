@@ -1,18 +1,19 @@
-name: Node Continuous Integration
+name: Node Continuous Integration # Name of the workflow
 
-on:
-  pull_request:
-    branches: [ master ]
+on: # Fire up on which event
+  pull_request: # Fires upon pull request event
+    branches:
+      - main # Fires if the PR is for master branch
 
-
-jobs:
-  test_pull_request:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+# Every workflow must have one or more jobs
+jobs: # Jobs to do
+  test_pull_request: # Job name
+    runs-on: ubuntu-latest # Runs the job on ubuntu-lastest VM
+    steps: # Steps that tests and build our code
+      - uses: actions/checkout@v2 # checks out to the latest release branch and uses that code
+      - uses: actions/setup-node@v1 # downloads node
         with:
-          node-version: 12
-      - run: npm ci
-      - run: npm test
-      - run: npm run build
+          node-version: 12 # of version 12
+      - run: npm ci # Runs npm clean install
+      - run: npm test # Runs test
+      - run: npm run build # Builds
